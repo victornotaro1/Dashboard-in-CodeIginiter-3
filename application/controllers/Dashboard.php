@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
         $data["title"] = "Dashboard - CodeIgniter";
         
 
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/nav-top', $data);
         $this->load->view('pages/dashboard', $data);

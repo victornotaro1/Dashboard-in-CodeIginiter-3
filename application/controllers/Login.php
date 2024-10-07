@@ -10,8 +10,9 @@ class Login extends CI_Controller {
 
     public function store()
     {
+     $this->load->model("login_model");
      $email = $_POST["email"];
-     $password = $_POST["password"];
+     $password = sha1($_POST["password"]);
      $user = $this->login_model->store($email, $password);
 
      if($user){
@@ -20,5 +21,11 @@ class Login extends CI_Controller {
      } else {
         redirect("login");
      }
+    }
+    
+    public function logout()
+    {
+    $this->session->unset_userdata("logged_user");
+    redirect("login");
     }
 }
